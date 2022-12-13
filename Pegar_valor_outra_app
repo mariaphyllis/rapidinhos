@@ -1,0 +1,11 @@
+(function executeRule(current, previous /*null when async*/) {
+
+	var grOUTROcampo = new GlideRecord('tabela_outra_app');
+	grOUTROcampo.addQuery('campoqueEHCOMUMnosdoisformularios', current.getUniqueValue()); // define
+	grOUTROcampo.query(); // aplica
+
+	if (grOUTROcampo.next()) {
+		current.setValue('campodaTABELAATUALquevaireceberoVALOR', grOUTROcampo.getValue('wacc'));
+		current.update();	
+	}
+})(current, previous);
